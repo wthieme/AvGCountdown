@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">AvG Countdown</string>
+    <string name="action_settings">Settings</string>
+    <string name="Pick_Date">Set</string>
+    <string name="Pick_Time">Set</string>
+    <string name="YmwdHms">YmwdHms></string>
+    <string name="Years">Years:</string>
+    <string name="Months">Months:</string>
+    <string name="Weeks">Weeks:</string>
+    <string name="Days">Days:</string>
+    <string name="Hours">Hours:</string>
+    <string name="Minutes">Minutes:</string>
+    <string name="Seconds">Seconds:</string>
+    <string name="DateTime">DateTime</string>
+    <string name="Totals">Totals</string>
+    <string name="AvgFw">AvG Fan Weekend</string>
+    <string name="CountDown">Countdown</string>
+    <string name="set">Set</string>
+    <string name="cancel">Cancel</string>
+    <string name="Counter">Counter</string>
+    title_activity_main
+</resources>

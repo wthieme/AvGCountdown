@@ -1,0 +1,446 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/actmain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7BE81">
+
+    <ImageView
+        android:id="@+id/imgBg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivmore"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            android:onClick="moreClick"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp" />
+
+    </RelativeLayout>
+
+    <TableLayout
+        android:id="@+id/ttxt"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <TableRow android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/tvAvgFw"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:shadowColor="#000000"
+                android:shadowDx="2.0"
+                android:shadowDy="2.0"
+                android:shadowRadius="2.0"
+                android:text="@string/AvgFw"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp" />
+
+        </TableRow>
+
+        <TableRow android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/tvCD"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:shadowColor="#000000"
+                android:shadowDx="2.0"
+                android:shadowDy="2.0"
+                android:shadowRadius="2.0"
+                android:text="@string/CountDown"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
+        </TableRow>
+
+        <TableRow android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/tvPeildatum"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/CountDown"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+        </TableRow>
+
+        <TableRow android:gravity="center_horizontal">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:id="@+id/tvY"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="y"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="m"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvW"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="w"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="d"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="h"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvMi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="m"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="s"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow android:gravity="center_horizontal">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvTyears"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:paddingRight="5dp"
+                    android:text="@string/Years"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvYears"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:text="@string/Years"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow android:gravity="center_horizontal">>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:textColor="#FFFFFF">
+
+                <TextView
+                    android:id="@+id/tvTmonths"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:paddingRight="5dp"
+                    android:text="@string/Months"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvMonths"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:text="@string/Months"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow android:gravity="center_horizontal">>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvTweeks"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:paddingRight="5dp"
+                    android:text="@string/Weeks"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvWeeks"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:text="@string/Weeks"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow android:gravity="center_horizontal">>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvTdays"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:paddingRight="5dp"
+                    android:text="@string/Days"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvDays"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:text="@string/Days"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow android:gravity="center_horizontal">>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvThours"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:paddingRight="5dp"
+                    android:text="@string/Hours"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvHours"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:text="@string/Hours"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow android:gravity="center_horizontal">>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvTminutes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:paddingRight="5dp"
+                    android:text="@string/Minutes"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvMinutes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:text="@string/Minutes"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow android:gravity="center_horizontal">>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvTseconds"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:paddingRight="5dp"
+                    android:text="@string/Seconds"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvSeconds"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:text="@string/Seconds"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/ttot"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:stretchColumns="1">
+
+        <TableRow
+            android:id="@+id/r1"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/c1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/c2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/c3"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/r2"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/c4"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/c5"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/c6"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/r3"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/c7"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/c8"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/c9"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="" />
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>

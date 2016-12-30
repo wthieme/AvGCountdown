@@ -1,0 +1,31 @@
+https://developers.google.com/drive/android/get-started
+
+SHA1: D4:60:C7:11:06:3D:A0:0A:04:F3:85:F3:C3:3B:F9:A0:F8:4B:2F:A7
+
+API key: AIzaSyCX8FDNtD_h_eD04Spa2Khtab5beSHHl1c 
+
+OAuth ClientId: 393598415544-ij2s9sdjr4i64r9prbhn0l68dvf53iji.apps.googleusercontent.com 
+
+"C:\Program Files\Java\jdk1.7.0_80\bin\keytool" -exportcert -alias avgcountdown -keystore C:\Users\Wilhelm\Dropbox\Android\AndroidstudioProjects\KeyStoreWhiteDove\whitedove.jks -list -v
+
+
+
+Debug:
+"C:\Program Files\Java\jdk1.7.0_80\bin\keytool" -exportcert -alias androiddebugkey -keystore C:\Users\Wilhelm\.android\debug.keystore -list -v
+
+SHA1: 77:EB:18:59:9D:86:8C:8A:75:9B:A3:6E:3B:43:7C:9F:6C:81:65:CA
+
+Key 
+AIzaSyAXDYGDRXQGDebS6patyDgH-8tcsAHseBA 
+
+Client Id: 844016988336-aagavkv827hv9q9s8bu3jufm9ft5i0c0.apps.googleusercontent.com
+
+
+30-8-2016
+
+Zelfde SHA1 gebruikt
+Nieuwe client Id: 3017971162-iup813oge61ge1vj97lr5mtnbved3t4t.apps.googleusercontent.com
+
+Keystore = WhiteDove.jks
+Password = Londoncity15
+Key = avgcountdown

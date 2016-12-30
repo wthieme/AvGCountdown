@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Event">
+        <EditTextPreference
+            android:defaultValue="AvG Fan Weekend"
+            android:key="eventname"
+            android:title="Event Name" />
+
+        <nl.whitedove.avgcountdown.DatePreference
+            android:key="eventdate"
+            android:title="Event Date" />
+
+        <nl.whitedove.avgcountdown.TimePreference
+            android:key="eventtime"
+            android:title="Event Time" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Text">
+        <ListPreference
+            android:defaultValue="2"
+            android:entries="@array/listArrayHor"
+            android:entryValues="@array/listValuesHor"
+            android:key="textlochor"
+            android:title="Text Position Horizontal" />
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/listArrayVer"
+            android:entryValues="@array/listValuesVer"
+            android:key="textlocver"
+            android:title="Text Position Vertical" />
+
+        <ListPreference
+            android:defaultValue="White"
+            android:entries="@array/listTextColor"
+            android:entryValues="@array/listTextColor"
+            android:key="textcolor"
+            android:title="Text Color" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Background">
+        <ListPreference
+            android:defaultValue="Manual"
+            android:entries="@array/listbgManAuto"
+            android:entryValues="@array/listbgManAuto"
+            android:key="bgManAuto"
+            android:title="Background Image Selection" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/listBgFreq"
+            android:entryValues="@array/listBgFreqValues"
+            android:key="bgFreq"
+            android:title="Background Automatic Frequency" />
+
+        <ListPreference
+            android:defaultValue="All"
+            android:entries="@array/bgCat"
+            android:entryValues="@array/bgCatValues"
+            android:key="bgCat"
+            android:title="Background Image category" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

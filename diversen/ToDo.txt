@@ -1,0 +1,16 @@
+*date picker, verkeerde maand
+*timepicker, verkeerde uur
+*Na deinstallatie begint niet op vandaag, maar op 1-1-1970
+*Async task pauseren en resumen
+*async task lijkt 2 x achterelkaar gedaan te worden
+*onpause/onstop/onresume stopt en start de timer
+*terug naar main activity zonder stapelen
+*Cancel select plaatje -> leeg scherm
+*plaatje gekanteld
+*plaatje vult niet uit na rotatie view
+*out of mem error
+*background Wilhelm verwijderen
+*plaatje verwijderen op sd kaart
+*Installeren op sd card
+
+*Deploy and upload in google play
