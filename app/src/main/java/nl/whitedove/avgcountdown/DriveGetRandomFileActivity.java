@@ -77,7 +77,7 @@ public class DriveGetRandomFileActivity extends Activity {
         if (isGooglePlayServicesAvailable()) {
             refreshResults();
         } else {
-            Melding.ShowMessage(this, "Google Play Services is required for this feature");
+            Melding.ShowMessage(this, "Google Play Services is required for this feature",true);
             returnToSender();
         }
     }
@@ -117,7 +117,7 @@ public class DriveGetRandomFileActivity extends Activity {
                         editor.apply();
                     }
                 } else if (resultCode == RESULT_CANCELED) {
-                    Melding.ShowMessage(this, "No account specified.");
+                    Melding.ShowMessage(this, "No account specified.",false);
                     returnToSender();
                 }
                 break;
@@ -143,7 +143,7 @@ public class DriveGetRandomFileActivity extends Activity {
             if (isDeviceOnline()) {
                 new MakeRequestTask(mCredential).execute();
             } else {
-                Melding.ShowMessage(this, "No network connection available.");
+                Melding.ShowMessage(this, "No network connection available.",false);
                 returnToSender();
             }
         }
@@ -214,7 +214,7 @@ public class DriveGetRandomFileActivity extends Activity {
         private com.google.api.services.drive.Drive mService = null;
         private Exception mLastError = null;
 
-        public MakeRequestTask(GoogleAccountCredential credential) {
+        MakeRequestTask(GoogleAccountCredential credential) {
             HttpTransport transport = AndroidHttp.newCompatibleTransport();
             JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
             mService = new com.google.api.services.drive.Drive.Builder(
@@ -309,11 +309,11 @@ public class DriveGetRandomFileActivity extends Activity {
                             DriveGetRandomFileActivity.REQUEST_AUTHORIZATION);
                 } else {
                     Melding.ShowMessage(getApplicationContext(), "The following error occurred:\n"
-                            + mLastError.getMessage());
+                            + mLastError.getMessage(),true);
                     returnToSender();
                 }
             } else {
-                Melding.ShowMessage(getApplicationContext(), "Request cancelled.");
+                Melding.ShowMessage(getApplicationContext(), "Request cancelled.",false);
                 returnToSender();
             }
             Melding.Log("onCancelled");

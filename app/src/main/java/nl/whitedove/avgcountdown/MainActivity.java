@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     mHandler.obtainMessage(1).sendToTarget();
                 } catch (Exception e) {
-                    Melding.ShowMessage(cxt, e.getMessage());
+                    Melding.ShowMessage(cxt, e.getMessage(), true);
                 }
             }
         };
@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
         setBackground();
         setLayout();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String avgEvent = preferences.getString("eventname", "AvG Fan Weekend");
+        String avgEvent = preferences.getString("eventname", "VUUR try out show");
         TextView tvAvgFw = (TextView) findViewById(R.id.tvAvgFw);
         Typeface font = Typeface.createFromAsset(getAssets(), "Curly.ttf");
         tvAvgFw.setTypeface(font);
@@ -289,7 +289,7 @@ public class MainActivity extends AppCompatActivity {
                 Bitmap bmp = decodeSampledBitmapFromFile(imgPath);
                 ivBg.setImageBitmap(bmp);
             } else {
-                Melding.ShowMessage(this, "Background image not found");
+                Melding.ShowMessage(this, "Background image not found", false);
             }
         }
         initTimer();
@@ -306,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
             options.inJustDecodeBounds = false;
             bmp = BitmapFactory.decodeFile(fileUri, options);
         } catch (Exception e) {
-            Melding.ShowMessage(cxt, e.getMessage());
+            Melding.ShowMessage(cxt, e.getMessage(), true);
         }
         return bmp;
     }
@@ -326,7 +326,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             BitmapFactory.decodeFile(fileUri, options);
         } catch (Exception e) {
-            Melding.ShowMessage(cxt, e.getMessage());
+            Melding.ShowMessage(cxt, e.getMessage(), true);
         }
         return (options.outHeight < height && options.outWidth < width);
     }
@@ -348,7 +348,7 @@ public class MainActivity extends AppCompatActivity {
             // Calculate inSampleSize
             options.inSampleSize = calculateInSampleSize(options, width, height);
         } catch (Exception e) {
-            Melding.ShowMessage(cxt, e.getMessage());
+            Melding.ShowMessage(cxt, e.getMessage(), true);
         }
         return options;
     }
@@ -379,7 +379,7 @@ public class MainActivity extends AppCompatActivity {
         //Using a weak reference means you won't prevent garbage collection
         private final WeakReference<MainActivity> myClassWeakReference;
 
-        public MyHandler(MainActivity myClassInstance) {
+        MyHandler(MainActivity myClassInstance) {
             myClassWeakReference = new WeakReference<>(myClassInstance);
         }
 

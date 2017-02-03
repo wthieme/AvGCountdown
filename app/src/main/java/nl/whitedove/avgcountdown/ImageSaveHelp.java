@@ -10,9 +10,9 @@ import android.widget.Toast;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
-public class ImageSaveHelp {
+class ImageSaveHelp {
 
-    public static void saveImage(Context cxt, InputStream input) {
+    static void saveImage(Context cxt, InputStream input) {
         FileOutputStream out = null;
         String dir = getDirectory(cxt);
         String filename = dir + "avgcdbg.png";
@@ -41,7 +41,7 @@ public class ImageSaveHelp {
         editor.apply();
     }
 
-    public static void saveImage(Context cxt, Uri imageUri) {
+    static void saveImage(Context cxt, Uri imageUri) {
         try {
             InputStream input = cxt.getContentResolver().openInputStream(imageUri);
             saveImage(cxt,input);
@@ -52,10 +52,10 @@ public class ImageSaveHelp {
 
     private static String getDirectory(Context cxt) {
         String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            // Return external storage folder
+        // Return external storage folder
+        if (Environment.MEDIA_MOUNTED.equals(state))
+            //noinspection ConstantConditions
             return cxt.getExternalFilesDir(null).getAbsolutePath();
-        }
         // Return internal storage folder
         return cxt.getFilesDir().getAbsolutePath();
     }

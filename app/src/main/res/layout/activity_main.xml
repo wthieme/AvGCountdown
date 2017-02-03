@@ -19,7 +19,7 @@
             android:id="@+id/ivmore"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:src="@drawable/ic_more_vert_black_24dp"
             android:onClick="moreClick"
             android:layout_alignParentEnd="true"

@@ -14,7 +14,7 @@ import org.joda.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class DatePreference extends DialogPreference {
-    private DateTime datum = new DateTime(2016, 12, 16, 12, 0);
+    private DateTime datum = new DateTime(2017, 6, 9, 19, 0);
     private DatePicker picker = null;
 
     public DatePreference(Context ctxt, AttributeSet attrs) {
@@ -31,7 +31,6 @@ public class DatePreference extends DialogPreference {
     @Override
     protected View onCreateDialogView() {
         picker = new DatePicker(getContext());
-        picker.setCalendarViewShown(false);
         return (picker);
     }
 

@@ -2,6 +2,7 @@ package nl.whitedove.avgcountdown;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
@@ -14,7 +15,7 @@ import org.joda.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class TimePreference extends DialogPreference {
-    private DateTime tijd = new DateTime(2016, 12, 16, 12, 0);
+    private DateTime tijd = new DateTime(2017, 6, 9, 19, 0);
     private TimePicker picker = null;
 
     public TimePreference(Context ctxt) {
@@ -42,8 +43,15 @@ public class TimePreference extends DialogPreference {
     @Override
     protected void onBindDialogView(View v) {
         super.onBindDialogView(v);
-        picker.setCurrentHour(tijd.getHourOfDay());
-        picker.setCurrentMinute(tijd.getMinuteOfHour());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            picker.setHour(tijd.getHourOfDay());
+            picker.setMinute(tijd.getMinuteOfHour());
+        } else {
+            //noinspection deprecation
+            picker.setCurrentHour(tijd.getHourOfDay());
+            //noinspection deprecation
+            picker.setCurrentMinute(tijd.getMinuteOfHour());
+        }
     }
 
     @Override
@@ -51,7 +59,11 @@ public class TimePreference extends DialogPreference {
         super.onDialogClosed(positiveResult);
 
         if (positiveResult) {
-            tijd = new DateTime(DateTime.now().getYear(), DateTime.now().getMonthOfYear(), DateTime.now().getDayOfMonth(), picker.getCurrentHour(), picker.getCurrentMinute());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                tijd = new DateTime(DateTime.now().getYear(), DateTime.now().getMonthOfYear(), DateTime.now().getDayOfMonth(), picker.getHour(), picker.getMinute());
+            else
+                //noinspection deprecation
+                tijd = new DateTime(DateTime.now().getYear(), DateTime.now().getMonthOfYear(), DateTime.now().getDayOfMonth(), picker.getCurrentHour(), picker.getCurrentMinute());
 
             setSummary(getSummary());
             if (callChangeListener(tijd.getMillis())) {
