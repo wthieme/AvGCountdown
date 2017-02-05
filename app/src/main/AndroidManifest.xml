@@ -3,11 +3,8 @@
     package="nl.whitedove.avgcountdown">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
     <application
         android:allowBackup="true"
@@ -31,7 +28,7 @@
         </activity>
         <activity android:name=".ImageSelectActivity">
         </activity>
-        <activity android:name=".DriveGetRandomFileActivity">
+        <activity android:name=".GetRandomFileActivity">
         </activity>
     </application>
 

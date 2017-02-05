@@ -25,7 +25,10 @@ public class ImageSelectActivity extends Activity {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     MY_PERMISSIONS_REQUEST);
+            return;
         }
+        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, 1);
     }
 
     @Override
@@ -38,7 +41,7 @@ public class ImageSelectActivity extends Activity {
                     Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intent, 1);
                 } else {
-                    Melding.ShowMessage(this, "Without permission it is not possible to show a background image", true);
+                    Helper.ShowMessage(this, "Without permission it is not possible to select a background image", true);
                     Intent intent = new Intent(this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
@@ -51,7 +54,6 @@ public class ImageSelectActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            //Melding("Getting image ...");
             Uri imageUri = data.getData();
             Context cxt = getApplicationContext();
             ImageSaveHelp.saveImage(cxt, imageUri);

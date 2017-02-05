@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void moreClick(View oView) {
-        Melding.Log("More clicked");
+        Helper.Log("More clicked");
         PopupMenu popup = new PopupMenu(this, oView);
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.settings, popup.getMenu());
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateScreen() {
-        Melding.Log("Update screen");
+        Helper.Log("Update screen");
 
         DateTime today = DateTime.now();
         DateTime thatDay = peildatum;
@@ -185,14 +185,14 @@ public class MainActivity extends AppCompatActivity {
     private void stopTimer() {
         if (executer != null && future != null) {
             future.cancel(false);
-            Melding.Log("Task gestopt");
+            Helper.Log("Task gestopt");
         }
     }
 
     private void initTimer() {
         if (executer == null) {
             executer = Executors.newSingleThreadScheduledExecutor();
-            Melding.Log("Executer gemaakt");
+            Helper.Log("Executer gemaakt");
         }
 
         final MyHandler mHandler = new MyHandler(this);
@@ -203,18 +203,18 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     mHandler.obtainMessage(1).sendToTarget();
                 } catch (Exception e) {
-                    Melding.ShowMessage(cxt, e.getMessage(), true);
+                    Helper.ShowMessage(cxt, e.getMessage(), true);
                 }
             }
         };
 
         if (future != null) {
             future.cancel(false);
-            Melding.Log("Task gestopt");
+            Helper.Log("Task gestopt");
         }
 
         future = executer.scheduleAtFixedRate(task, 0, 1, TimeUnit.SECONDS);
-        Melding.Log("Task geactiveerd");
+        Helper.Log("Task geactiveerd");
     }
 
     private void setDefaults() {
@@ -275,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         String imgPath = preferences.getString("background", "");
-        Melding.Log("ImgPath = " + imgPath);
+        Helper.Log("ImgPath = " + imgPath);
         if (!imgPath.isEmpty()) {
 
             ImageView ivBg = (ImageView) findViewById(R.id.imgBg);
@@ -289,7 +289,7 @@ public class MainActivity extends AppCompatActivity {
                 Bitmap bmp = decodeSampledBitmapFromFile(imgPath);
                 ivBg.setImageBitmap(bmp);
             } else {
-                Melding.ShowMessage(this, "Background image not found", false);
+                Helper.ShowMessage(this, "Background image not found");
             }
         }
         initTimer();
@@ -306,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
             options.inJustDecodeBounds = false;
             bmp = BitmapFactory.decodeFile(fileUri, options);
         } catch (Exception e) {
-            Melding.ShowMessage(cxt, e.getMessage(), true);
+            Helper.ShowMessage(cxt, e.getMessage(), true);
         }
         return bmp;
     }
@@ -326,7 +326,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             BitmapFactory.decodeFile(fileUri, options);
         } catch (Exception e) {
-            Melding.ShowMessage(cxt, e.getMessage(), true);
+            Helper.ShowMessage(cxt, e.getMessage(), true);
         }
         return (options.outHeight < height && options.outWidth < width);
     }
@@ -348,7 +348,7 @@ public class MainActivity extends AppCompatActivity {
             // Calculate inSampleSize
             options.inSampleSize = calculateInSampleSize(options, width, height);
         } catch (Exception e) {
-            Melding.ShowMessage(cxt, e.getMessage(), true);
+            Helper.ShowMessage(cxt, e.getMessage(), true);
         }
         return options;
     }
@@ -441,7 +441,7 @@ public class MainActivity extends AppCompatActivity {
             editor.putLong("lastdate", nu.getMillis());
             editor.apply();
             Intent intent = new Intent();
-            intent.setClass(MainActivity.this, DriveGetRandomFileActivity.class);
+            intent.setClass(MainActivity.this, GetRandomFileActivity.class);
             startActivity(intent);
         }
     }
