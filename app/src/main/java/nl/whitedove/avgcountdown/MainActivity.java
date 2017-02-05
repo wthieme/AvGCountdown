@@ -18,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TableLayout;
@@ -47,7 +48,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static DateTime peildatum = new DateTime(2016, 12, 16, 12, 0);
+    private static DateTime peildatum = Helper.DEFAULT_EVENT_DATE;
     private DateTimeFormatter dtFormat = DateTimeFormat.shortDateTime().withLocale(Locale.getDefault());
     private ScheduledExecutorService executer = Executors.newSingleThreadScheduledExecutor();
     private ScheduledFuture future;
@@ -102,9 +103,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.select_background:
-                        Intent intent2 = new Intent();
-                        intent2.setClass(MainActivity.this, ImageSelectActivity.class);
-                        startActivityForResult(intent2, 1);
+                        SelectBgImage();
                         return true;
                 }
                 return true;
@@ -112,6 +111,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         popup.show();
+    }
+
+    private void SelectBgImage() {
+        Intent intent2 = new Intent();
+        intent2.setClass(MainActivity.this, ImageSelectActivity.class);
+        startActivityForResult(intent2, 1);
+    }
+
+    public void selbgClick(View view) {
+        SelectBgImage();
     }
 
     private void updateScreen() {
@@ -179,7 +188,6 @@ public class MainActivity extends AppCompatActivity {
         int totalSeconds = Math.abs(Seconds.secondsBetween(today, thatDay).getSeconds());
         TextView tvSeconds = (TextView) findViewById(R.id.tvSeconds);
         tvSeconds.setText(nFormat.format(totalSeconds));
-        setBackground();
     }
 
     private void stopTimer() {
@@ -218,7 +226,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setDefaults() {
-        setBackground();
         setLayout();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String avgEvent = preferences.getString("eventname", "VUUR try out show");
@@ -274,6 +281,8 @@ public class MainActivity extends AppCompatActivity {
             ((TextView) findViewById(R.id.tvSeconds)).setTextColor(zwart);
         }
 
+        Context context = getApplicationContext();
+        Display display = getWindowManager().getDefaultDisplay();
         String imgPath = preferences.getString("background", "");
         Helper.Log("ImgPath = " + imgPath);
         if (!imgPath.isEmpty()) {
@@ -282,96 +291,18 @@ public class MainActivity extends AppCompatActivity {
             File file = new File(imgPath);
             if (file.exists()) {
                 // If image is smaller than the screen adjes view bounds
-                boolean small = imageSmallerThanScreen(imgPath);
+                boolean small = ImageHelper.imageSmallerThanScreen(imgPath, context, display);
                 if (small) {
                     ivBg.setAdjustViewBounds(true);
                 }
-                Bitmap bmp = decodeSampledBitmapFromFile(imgPath);
+                Bitmap bmp = ImageHelper.decodeSampledBitmapFromFile(imgPath, context, display);
                 ivBg.setImageBitmap(bmp);
+                findViewById(R.id.btnselbg).setVisibility(View.GONE);
             } else {
                 Helper.ShowMessage(this, "Background image not found");
             }
         }
         initTimer();
-    }
-
-    private Bitmap decodeSampledBitmapFromFile(String fileUri) {
-
-        // Decode bitmap with inSampleSize set
-        final BitmapFactory.Options options = getImageSize(fileUri);
-
-        Context cxt = getApplicationContext();
-        Bitmap bmp = null;
-        try {
-            options.inJustDecodeBounds = false;
-            bmp = BitmapFactory.decodeFile(fileUri, options);
-        } catch (Exception e) {
-            Helper.ShowMessage(cxt, e.getMessage(), true);
-        }
-        return bmp;
-    }
-
-    private boolean imageSmallerThanScreen(String fileUri) {
-        // Display size
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-        int height = size.y;
-
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-
-        // Decode with inJustDecodeBounds=true to check dimensions
-        Context cxt = getApplicationContext();
-        try {
-            BitmapFactory.decodeFile(fileUri, options);
-        } catch (Exception e) {
-            Helper.ShowMessage(cxt, e.getMessage(), true);
-        }
-        return (options.outHeight < height && options.outWidth < width);
-    }
-
-    private BitmapFactory.Options getImageSize(String fileUri) {
-        // Display size
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-        int height = size.y;
-
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-
-        // Decode with inJustDecodeBounds=true to check dimensions
-        Context cxt = getApplicationContext();
-        try {
-            BitmapFactory.decodeFile(fileUri, options);
-            // Calculate inSampleSize
-            options.inSampleSize = calculateInSampleSize(options, width, height);
-        } catch (Exception e) {
-            Helper.ShowMessage(cxt, e.getMessage(), true);
-        }
-        return options;
-    }
-
-    private int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
-
-        if (height > reqHeight || width > reqWidth) {
-
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
-
-            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-            // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) > reqHeight
-                    && (halfWidth / inSampleSize) > reqWidth) {
-                inSampleSize *= 2;
-            }
-        }
-        return inSampleSize;
     }
 
     //static inner class doesn't hold an implicit reference to the outer class
@@ -395,19 +326,19 @@ public class MainActivity extends AppCompatActivity {
     private void setLayout() {
         setContentView(R.layout.activity_main);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        Context cxt = getApplicationContext();
+        Context context = getApplicationContext();
 
         String hor = preferences.getString("textlochor", "2");
         String ver = preferences.getString("textlocver", "1");
         String rowname = "r" + ver;
 
-        int rowid = getResources().getIdentifier(rowname, "id", cxt.getPackageName());
+        int rowid = getResources().getIdentifier(rowname, "id", context.getPackageName());
         TableRow tr = (TableRow) findViewById(rowid);
         tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 0f));
 
         int cell = (Integer.parseInt(ver) - 1) * 3 + Integer.parseInt(hor);
         String cellname = String.format("c%d", cell);
-        int cellid = getResources().getIdentifier(cellname, "id", cxt.getPackageName());
+        int cellid = getResources().getIdentifier(cellname, "id", context.getPackageName());
         TextView tv = (TextView) findViewById(cellid);
         ViewGroup parent = (ViewGroup) tv.getParent();
 
@@ -419,30 +350,5 @@ public class MainActivity extends AppCompatActivity {
         parent.removeView(tv);
         parent.addView(tab, index, new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT));
         tv.setVisibility(View.INVISIBLE);
-    }
-
-    private void setBackground() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String manauto = preferences.getString("bgManAuto", "Manual");
-
-        if (manauto.equals("Manual")) {
-            return;
-        }
-
-        long last = preferences.getLong("lastdate", 0L);
-        DateTime lastDate = new DateTime(last);
-        DateTime nu = DateTime.now();
-
-        String bgFreq = preferences.getString("bgFreq", "5");
-
-        int minutesExtra = Integer.parseInt(bgFreq);
-        if (lastDate.plusMinutes(minutesExtra).isBefore(nu)) {
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putLong("lastdate", nu.getMillis());
-            editor.apply();
-            Intent intent = new Intent();
-            intent.setClass(MainActivity.this, GetRandomFileActivity.class);
-            startActivity(intent);
-        }
     }
 }

@@ -15,7 +15,7 @@ import org.joda.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class TimePreference extends DialogPreference {
-    private DateTime tijd = new DateTime(2017, 6, 9, 19, 0);
+    private DateTime tijd = Helper.DEFAULT_EVENT_DATE;
     private TimePicker picker = null;
 
     public TimePreference(Context ctxt) {

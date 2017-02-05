@@ -14,7 +14,7 @@ import org.joda.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class DatePreference extends DialogPreference {
-    private DateTime datum = new DateTime(2017, 6, 9, 19, 0);
+    private DateTime datum = Helper.DEFAULT_EVENT_DATE;
     private DatePicker picker = null;
 
     public DatePreference(Context ctxt, AttributeSet attrs) {

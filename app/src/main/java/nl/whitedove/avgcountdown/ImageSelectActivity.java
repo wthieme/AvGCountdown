@@ -56,7 +56,7 @@ public class ImageSelectActivity extends Activity {
         if (resultCode == RESULT_OK) {
             Uri imageUri = data.getData();
             Context cxt = getApplicationContext();
-            ImageSaveHelp.saveImage(cxt, imageUri);
+            ImageHelper.saveImage(cxt, imageUri);
         }
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -19,13 +19,24 @@
             android:id="@+id/ivmore"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="15dp"
-            android:src="@drawable/ic_more_vert_black_24dp"
-            android:onClick="moreClick"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp"
+            android:onClick="moreClick"
             android:paddingLeft="0dp"
-            android:paddingRight="0dp" />
+            android:paddingRight="0dp"
+            android:src="@drawable/ic_more_vert_black_24dp" />
+
+        <Button
+            android:id="@+id/btnselbg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:onClick="selbgClick"
+            android:text="@string/selbgim"
+            android:textAllCaps="false" />
 
     </RelativeLayout>
 
@@ -52,6 +63,7 @@
         </TableRow>
 
         <TableRow android:gravity="center_horizontal">
+
             <TextView
                 android:id="@+id/tvCD"
                 android:layout_width="fill_parent"
@@ -67,6 +79,7 @@
         </TableRow>
 
         <TableRow android:gravity="center_horizontal">
+
             <TextView
                 android:id="@+id/tvPeildatum"
                 android:layout_width="fill_parent"
@@ -74,10 +87,11 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/CountDown"
                 android:textColor="#FFFFFF"
-                android:textSize="12sp" />
+                android:textSize="16sp" />
         </TableRow>
 
         <TableRow android:gravity="center_horizontal">
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
@@ -90,49 +104,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="y"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvM"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="m"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvW"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="w"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="d"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvH"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="h"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvMi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="m"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvS"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="s"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -154,7 +175,8 @@
                     android:gravity="right"
                     android:paddingRight="5dp"
                     android:text="@string/Years"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvYears"
@@ -164,7 +186,8 @@
                     android:layout_weight="1"
                     android:paddingLeft="5dp"
                     android:text="@string/Years"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
             </LinearLayout>
         </TableRow>
 
@@ -186,7 +209,8 @@
                     android:gravity="right"
                     android:paddingRight="5dp"
                     android:text="@string/Months"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvMonths"
@@ -196,7 +220,8 @@
                     android:layout_weight="1"
                     android:paddingLeft="5dp"
                     android:text="@string/Months"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
             </LinearLayout>
         </TableRow>
@@ -218,7 +243,8 @@
                     android:gravity="right"
                     android:paddingRight="5dp"
                     android:text="@string/Weeks"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvWeeks"
@@ -228,7 +254,8 @@
                     android:layout_weight="1"
                     android:paddingLeft="5dp"
                     android:text="@string/Weeks"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
             </LinearLayout>
         </TableRow>
@@ -250,7 +277,8 @@
                     android:gravity="right"
                     android:paddingRight="5dp"
                     android:text="@string/Days"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvDays"
@@ -260,7 +288,8 @@
                     android:layout_weight="1"
                     android:paddingLeft="5dp"
                     android:text="@string/Days"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
             </LinearLayout>
         </TableRow>
 
@@ -281,7 +310,8 @@
                     android:gravity="right"
                     android:paddingRight="5dp"
                     android:text="@string/Hours"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvHours"
@@ -291,7 +321,8 @@
                     android:layout_weight="1"
                     android:paddingLeft="5dp"
                     android:text="@string/Hours"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
             </LinearLayout>
         </TableRow>
 
@@ -312,7 +343,8 @@
                     android:gravity="right"
                     android:paddingRight="5dp"
                     android:text="@string/Minutes"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvMinutes"
@@ -322,7 +354,8 @@
                     android:layout_weight="1"
                     android:paddingLeft="5dp"
                     android:text="@string/Minutes"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
             </LinearLayout>
 
         </TableRow>
@@ -344,7 +377,8 @@
                     android:gravity="right"
                     android:paddingRight="5dp"
                     android:text="@string/Seconds"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvSeconds"
@@ -354,7 +388,8 @@
                     android:layout_weight="1"
                     android:paddingLeft="5dp"
                     android:text="@string/Seconds"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
             </LinearLayout>
 
         </TableRow>
@@ -365,10 +400,10 @@
         android:id="@+id/ttot"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:stretchColumns="1">
 
         <TableRow

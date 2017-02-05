@@ -39,26 +39,4 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Background">
-        <ListPreference
-            android:defaultValue="Manual"
-            android:entries="@array/listbgManAuto"
-            android:entryValues="@array/listbgManAuto"
-            android:key="bgManAuto"
-            android:title="Background Image Selection" />
-        <ListPreference
-            android:defaultValue="1"
-            android:entries="@array/listBgFreq"
-            android:entryValues="@array/listBgFreqValues"
-            android:key="bgFreq"
-            android:title="Background Automatic Frequency" />
-
-        <ListPreference
-            android:defaultValue="All"
-            android:entries="@array/bgCat"
-            android:entryValues="@array/bgCatValues"
-            android:key="bgCat"
-            android:title="Background Image category" />
-
-    </PreferenceCategory>
 </PreferenceScreen>
