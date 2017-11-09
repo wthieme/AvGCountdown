@@ -15,7 +15,7 @@ import java.io.InputStream;
 
 class ImageHelper {
 
-    static void saveImage(Context cxt, InputStream input) {
+    private static void saveImage(Context cxt, InputStream input) {
         FileOutputStream out = null;
         String dir = getDirectory(cxt);
         String filename = dir + "avgcdbg.png";
@@ -96,7 +96,7 @@ class ImageHelper {
         return (options.outHeight < height && options.outWidth < width);
     }
 
-    static BitmapFactory.Options getImageSize(String fileUri, Context context, Display display) {
+    private static BitmapFactory.Options getImageSize(String fileUri, Context context, Display display) {
         // Display size,
         Point size = new Point();
         display.getSize(size);

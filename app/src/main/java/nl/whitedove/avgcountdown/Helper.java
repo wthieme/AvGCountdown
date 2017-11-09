@@ -11,30 +11,12 @@ import org.joda.time.DateTime;
 class Helper {
 
     private static final boolean DEBUG = false;
-    static final DateTime DEFAULT_EVENT_DATE = new DateTime(2017, 6, 9, 19, 0);
+    static final DateTime DEFAULT_EVENT_DATE = new DateTime(2018, 5, 29, 19, 0);
 
     static void Log(String log) {
         if (Helper.DEBUG) {
             System.out.println(log);
         }
-    }
-
-    static Boolean TestInternet(Context ctx) {
-        Boolean result;
-
-        ConnectivityManager cm = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (cm == null) {
-            result = false;
-        } else {
-            NetworkInfo netInfo = cm.getActiveNetworkInfo();
-            result = netInfo != null && netInfo.isConnectedOrConnecting();
-        }
-
-        if (!result) {
-            Helper.ShowMessage(ctx, "Geen internet connectie");
-        }
-
-        return result;
     }
 
     static void ShowMessage(Context cxt, String melding) {

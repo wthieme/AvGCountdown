@@ -1,12 +1,11 @@
 package nl.whitedove.avgcountdown;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,7 +17,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TableLayout;
@@ -123,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
         SelectBgImage();
     }
 
+    @SuppressLint("DefaultLocale")
     private void updateScreen() {
         Helper.Log("Update screen");
 
@@ -131,62 +130,62 @@ public class MainActivity extends AppCompatActivity {
 
         Period period = new Period(thatDay, today);
 
-        TextView tvCD = (TextView) findViewById(R.id.tvCD);
+        TextView tvCD = findViewById(R.id.tvCD);
         if (today.isAfter(thatDay))
             tvCD.setText(getString(R.string.Counter));
         else
             tvCD.setText(getString(R.string.CountDown));
 
-        TextView tvY = (TextView) findViewById(R.id.tvY);
+        TextView tvY = findViewById(R.id.tvY);
         tvY.setText(String.format("%dy ", Math.abs(period.getYears())));
 
-        TextView tvM = (TextView) findViewById(R.id.tvM);
+        TextView tvM = findViewById(R.id.tvM);
         tvM.setText(String.format("%dm ", Math.abs(period.getMonths())));
 
-        TextView tvW = (TextView) findViewById(R.id.tvW);
+        TextView tvW = findViewById(R.id.tvW);
         tvW.setText(String.format("%dw ", Math.abs(period.getWeeks())));
 
-        TextView tvD = (TextView) findViewById(R.id.tvD);
+        TextView tvD = findViewById(R.id.tvD);
         tvD.setText(String.format("%dd ", Math.abs(period.getDays())));
 
-        TextView tvH = (TextView) findViewById(R.id.tvH);
+        TextView tvH = findViewById(R.id.tvH);
         tvH.setText(String.format("%dh ", Math.abs(period.getHours())));
 
-        TextView tvMi = (TextView) findViewById(R.id.tvMi);
+        TextView tvMi = findViewById(R.id.tvMi);
         tvMi.setText(String.format("%dm ", Math.abs(period.getMinutes())));
 
-        TextView tvS = (TextView) findViewById(R.id.tvS);
+        TextView tvS = findViewById(R.id.tvS);
         tvS.setText(String.format("%ds", Math.abs(period.getSeconds())));
 
         Locale locale = Locale.getDefault();
         NumberFormat nFormat = NumberFormat.getNumberInstance(locale);
 
         long totalYears = Math.abs(Years.yearsBetween(today, thatDay).getYears());
-        TextView tvYears = (TextView) findViewById(R.id.tvYears);
+        TextView tvYears = findViewById(R.id.tvYears);
         tvYears.setText(nFormat.format(totalYears));
 
         long totalMonths = Math.abs(Months.monthsBetween(today, thatDay).getMonths());
-        TextView tvMonths = (TextView) findViewById(R.id.tvMonths);
+        TextView tvMonths = findViewById(R.id.tvMonths);
         tvMonths.setText(nFormat.format(totalMonths));
 
         long totalWeeks = Math.abs(Weeks.weeksBetween(today, thatDay).getWeeks());
-        TextView tvWeeks = (TextView) findViewById(R.id.tvWeeks);
+        TextView tvWeeks = findViewById(R.id.tvWeeks);
         tvWeeks.setText(nFormat.format(totalWeeks));
 
         long totalDays = Math.abs(Days.daysBetween(today, thatDay).getDays());
-        TextView tvDays = (TextView) findViewById(R.id.tvDays);
+        TextView tvDays = findViewById(R.id.tvDays);
         tvDays.setText(nFormat.format(totalDays));
 
         long totalHours = Math.abs(Hours.hoursBetween(today, thatDay).getHours());
-        TextView tvHours = (TextView) findViewById(R.id.tvHours);
+        TextView tvHours = findViewById(R.id.tvHours);
         tvHours.setText(nFormat.format(totalHours));
 
         long totalMinutes = Math.abs(Minutes.minutesBetween(today, thatDay).getMinutes());
-        TextView tvMinutes = (TextView) findViewById(R.id.tvMinutes);
+        TextView tvMinutes = findViewById(R.id.tvMinutes);
         tvMinutes.setText(nFormat.format(totalMinutes));
 
         int totalSeconds = Math.abs(Seconds.secondsBetween(today, thatDay).getSeconds());
-        TextView tvSeconds = (TextView) findViewById(R.id.tvSeconds);
+        TextView tvSeconds = findViewById(R.id.tvSeconds);
         tvSeconds.setText(nFormat.format(totalSeconds));
     }
 
@@ -228,8 +227,8 @@ public class MainActivity extends AppCompatActivity {
     private void setDefaults() {
         setLayout();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String avgEvent = preferences.getString("eventname", "VUUR try out show");
-        TextView tvAvgFw = (TextView) findViewById(R.id.tvAvgFw);
+        String avgEvent = preferences.getString("eventname", "AvG & Residentie Orkest");
+        TextView tvAvgFw = findViewById(R.id.tvAvgFw);
         Typeface font = Typeface.createFromAsset(getAssets(), "Curly.ttf");
         tvAvgFw.setTypeface(font);
         tvAvgFw.setText(avgEvent);
@@ -242,10 +241,10 @@ public class MainActivity extends AppCompatActivity {
         DateTime dt2 = new DateTime(l2);
 
         peildatum = new DateTime(dt1.getYear(), dt1.getMonthOfYear(), dt1.getDayOfMonth(), dt2.getHourOfDay(), dt2.getMinuteOfHour());
-        TextView tvCD = (TextView) findViewById(R.id.tvCD);
+        TextView tvCD = findViewById(R.id.tvCD);
         tvCD.setTypeface(font);
 
-        TextView tvPD = (TextView) findViewById(R.id.tvPeildatum);
+        TextView tvPD = findViewById(R.id.tvPeildatum);
         tvPD.setText(dtFormat.print(peildatum));
 
         String kleur = preferences.getString("textcolor", "White");
@@ -287,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
         Helper.Log("ImgPath = " + imgPath);
         if (!imgPath.isEmpty()) {
 
-            ImageView ivBg = (ImageView) findViewById(R.id.imgBg);
+            ImageView ivBg = findViewById(R.id.imgBg);
             File file = new File(imgPath);
             if (file.exists()) {
                 // If image is smaller than the screen adjes view bounds
@@ -333,16 +332,16 @@ public class MainActivity extends AppCompatActivity {
         String rowname = "r" + ver;
 
         int rowid = getResources().getIdentifier(rowname, "id", context.getPackageName());
-        TableRow tr = (TableRow) findViewById(rowid);
+        TableRow tr = findViewById(rowid);
         tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 0f));
 
         int cell = (Integer.parseInt(ver) - 1) * 3 + Integer.parseInt(hor);
-        String cellname = String.format("c%d", cell);
+        @SuppressLint("DefaultLocale") String cellname = String.format("c%d", cell);
         int cellid = getResources().getIdentifier(cellname, "id", context.getPackageName());
-        TextView tv = (TextView) findViewById(cellid);
+        TextView tv = findViewById(cellid);
         ViewGroup parent = (ViewGroup) tv.getParent();
 
-        TableLayout tab = (TableLayout) findViewById(R.id.ttxt);
+        TableLayout tab = findViewById(R.id.ttxt);
         ViewGroup parenttab = (ViewGroup) tab.getParent();
         parenttab.removeView(tab);
 

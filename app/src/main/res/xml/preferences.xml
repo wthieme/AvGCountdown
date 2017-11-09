@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="Event">
         <EditTextPreference
-            android:defaultValue="VUUR try out show"
+            android:defaultValue="AvG &amp; Residentie Orkest"
             android:key="eventname"
             android:title="Event Name" />
 
